@@ -2,61 +2,76 @@
 // a specific number to any number passed to it. For example, if the closure is
 // created with 5, the returned function should add 5 to any number passed
 // to it.
+function add(num){
+    return function(){
+        console.log(num + 5);
+    }
+}
+let numAdd = add(89);
+numAdd();
 
-// function sum_of(value1) {
-//     return function(value2) {
-//       return value1 + value2;
-//     }
-//   }
-//   let callFunc = sum_of(4);
-//   console.log(callFunc(5));  
-    
 // 2. Write a recursive function that searches an array for a specific value. The
 // function should return true if the value is found, and false if it is not. You
 // can assume that the array is not nested.
+let nums = [1,6,3,7,4,5,8,9];
+let no = +prompt("Enter a roll num you want to search");
+let filteredNum = nums.filter(function(val){
+    if(val === no){
+        return true;
+    }
+    else{
+        return false;
+    }
+});
+console.log(filteredNum);
 
-// function searchArray(myName, value) {
 
-//   if (myName.length === 0) {
-//     return false;
-//   }
-
-//   if (myName[0] === value) {
-//     return true;
-//   }
-  
-//   else {
-//     return searchArray(myName.slice(1), value);
-//   }
-// }
-
-//   let myName = ["A", "N", "O", "S", "H"];
-// console.log(searchArray(myName, "P"));  // return false
-// console.log(searchArray(myName, "S"));  // return true
-
+// 3. Write a function that adds a new paragraph element to the bottom of an
+// HTML document. The function should take a string argument that will be
+// used as the text content of the new paragraph element.
+function addPara(para){
+    let paragraphElement = document.createElement('p');
+    paragraphElement.innerText = para;
+    document.body.appendChild(paragraphElement);
+}
+addPara("Hello this is Anosh");
 
 
 // 4. Write a function that adds a new list item to an unordered list in an HTML
 // document. The function should take a string argument that will be used as
 // the text content of the new list item.
+let list = document.querySelector("ul");
+function newListItem(newLi){
+    let newItem = document.createElement('li');
+    newItem.innerText = newLi;
+    list.appendChild(newItem);
+}
+newListItem("Strawberry");
+newListItem("Melon");
 
-// function changeListItems(items){
-//   document.querySelector('li');
-//   return items;
-// }
-// let new_list = changeListItems("Javascript");
-// console.log(new_list);
 
 // 5. Write a function that changes the background color of an HTML element.
 // The function should take two arguments: the first argument is a reference
 // to the HTML element, and the second argument is a string representing
 // the new background color.
+let element = document.querySelector("#my-para");
+function changeColor(element,color){
+    element.style.color = color;
+}
+changeColor(element,"red");
 
 
-function backgroundColor(element, color) {
-  element.style.backgroundColor = color;
-} 
-
-const myElement = document.querySelector('ul');
-backgroundColor(myElement, 'red');
-
+// 6. Write a function that saves an object to localStorage. The function should
+// take two arguments: the first argument is a string representing the key to
+// use for storing the object, and the second argument is the object to store.
+let courseTeacherArray = [];
+function courseTeacher(course,teacher) {
+    let obj = {
+        courseName: course,
+        teacher : teacher 
+    }
+    courseTeacherArray.push(obj);
+}
+courseTeacher("Name","Anosh");
+courseTeacher("Name","Aasfa");
+console.log(courseTeacherArray);
